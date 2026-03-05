@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@ihkeL Studio — Home Décor & Beauty Picks</title>
+<meta name="description" content="@ihkeL Studio — Curated home décor and beauty products from Amazon India. Handpicked bestsellers, honest reviews, and direct links.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terra:#C96A3A; --burnt:#A04A20; --sand:#F2E8D9;
+    --sage:#7A9E7E; --charcoal:#1E1A17; --warm:#FAF5EE;
+    --muted:#8A7060; --gold:#D4A857; --ivory:#FDF8F2;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Outfit',sans-serif;background:var(--warm);color:var(--charcoal);overflow-x:hidden;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:18px 72px;display:flex;justify-content:space-between;align-items:center;background:rgba(30,26,23,0.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(212,168,87,0.18);}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:24px;color:var(--sand);text-decoration:none;letter-spacing:0.5px;display:flex;align-items:center;gap:0;}
+  .nav-logo .at{color:var(--sand);font-size:18px;font-family:'Outfit',sans-serif;font-weight:400;align-self:flex-start;margin-top:4px;margin-right:1px;}
+  .nav-logo .brand-L{color:var(--terra);}
+  .nav-logo .brand-S{color:var(--terra);}
+  .nav-links{display:flex;gap:30px;list-style:none;}
+  .nav-links a{font-size:13px;color:rgba(242,232,217,0.6);text-decoration:none;transition:color .2s;}
+  .nav-links a:hover{color:var(--sand);}
+  .nav-cta{background:var(--terra)!important;color:white!important;padding:9px 22px;border-radius:30px;font-weight:500!important;}
+  .nav-cta:hover{background:var(--burnt)!important;}
+
+  /* HERO */
+  .hero{min-height:100vh;background:var(--charcoal);display:grid;grid-template-columns:1.1fr 0.9fr;position:relative;overflow:hidden;}
+  .hero::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 70% at 75% 40%,rgba(201,106,58,.22) 0%,transparent 70%),radial-gradient(ellipse 40% 50% at 15% 70%,rgba(122,158,126,.15) 0%,transparent 65%);}
+  .hero-left{display:flex;flex-direction:column;justify-content:center;padding:110px 64px 80px 80px;position:relative;z-index:2;}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:28px;opacity:0;animation:slideUp .8s .2s forwards;}
+  .eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--gold);}
+  h1{font-family:'Cormorant Garamond',serif;font-size:clamp(56px,6.5vw,92px);font-weight:700;line-height:.95;color:var(--sand);margin-bottom:28px;opacity:0;animation:slideUp .8s .4s forwards;}
+  h1 em{font-style:italic;color:var(--terra);}
+  .hero-sub{font-size:15px;font-weight:300;line-height:1.8;color:rgba(242,232,217,.55);max-width:400px;margin-bottom:46px;opacity:0;animation:slideUp .8s .6s forwards;}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:slideUp .8s .8s forwards;}
+  .btn-main{background:var(--terra);color:white;padding:15px 38px;border-radius:50px;font-size:14px;font-weight:500;text-decoration:none;box-shadow:0 8px 32px rgba(201,106,58,.38);transition:transform .2s,box-shadow .2s,background .2s;}
+  .btn-main:hover{transform:translateY(-2px);background:var(--burnt);}
+  .btn-ghost{background:transparent;color:var(--sand);padding:15px 32px;border-radius:50px;border:1.5px solid rgba(242,232,217,.25);font-size:14px;font-weight:400;text-decoration:none;transition:border-color .2s,color .2s;}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+  .hero-right{display:flex;align-items:center;justify-content:center;padding:80px 50px 80px 20px;position:relative;z-index:2;opacity:0;animation:fadeIn 1.2s .5s forwards;}
+  .collage{display:grid;grid-template-columns:140px 140px;grid-template-rows:130px 130px 130px;gap:14px;transform:rotate(-3deg);}
+  .col-card{border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:42px;gap:8px;transition:transform .3s;cursor:default;}
+  .col-card:hover{transform:scale(1.06) rotate(2deg);}
+  .col-card.span2{grid-column:span 2;}
+  .col-label{font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);}
+  .cc1{background:linear-gradient(145deg,#C96A3A,#A04A20);}
+  .cc2{background:linear-gradient(145deg,#7A9E7E,#4A6741);}
+  .cc3{background:linear-gradient(145deg,#D4A857,#A07030);}
+  .cc4{background:linear-gradient(145deg,#2E2820,#4A3828);border:1px solid rgba(212,168,87,.3);}
+  .cc5{background:linear-gradient(145deg,#9E7A7A,#6A4A4A);}
+
+  /* TRUST BAR */
+  .trust-bar{background:var(--gold);padding:13px 40px;display:flex;justify-content:center;gap:56px;flex-wrap:wrap;}
+  .trust-item{font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--charcoal);display:flex;align-items:center;gap:8px;}
+
+  /* SECTIONS */
+  section{padding:96px 80px;}
+  .sec-label{font-size:11px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--terra);margin-bottom:12px;}
+  .sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4.5vw,58px);font-weight:700;line-height:1.05;color:var(--charcoal);margin-bottom:18px;}
+  .picks{background:var(--ivory);}
+  .beauty-sec{background:var(--sand);}
+  .picks-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:24px;flex-wrap:wrap;}
+  .picks-head p{max-width:360px;color:var(--muted);font-size:15px;line-height:1.7;font-weight:300;}
+
+  /* PRODUCT GRID — 4 cols */
+  .grid-products{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+
+  /* PRODUCT CARD */
+  .p-card{background:white;border-radius:22px;overflow:hidden;box-shadow:0 2px 16px rgba(30,26,23,.06);transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;}
+  .p-card:hover{transform:translateY(-7px);box-shadow:0 18px 48px rgba(30,26,23,.13);}
+  .p-card.dark-card{background:var(--charcoal);}
+
+  /* Product image with real <img> */
+  .p-img{height:200px;position:relative;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+  .p-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
+  .p-card:hover .p-img img{transform:scale(1.06);}
+  .p-img .fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;font-size:60px;}
+
+  .badge-pill{position:absolute;top:12px;right:12px;z-index:2;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:20px;background:var(--terra);color:white;}
+  .badge-pill.gold{background:var(--gold);color:var(--charcoal);}
+  .badge-pill.sage{background:var(--sage);color:white;}
+
+  .p-body{padding:18px 20px 22px;flex:1;display:flex;flex-direction:column;}
+  .p-cat{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--terra);margin-bottom:6px;}
+  .dark-card .p-cat{color:var(--gold);}
+  .p-name{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;line-height:1.25;color:var(--charcoal);margin-bottom:7px;}
+  .dark-card .p-name{color:var(--sand);}
+  .p-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px;font-weight:300;flex:1;}
+  .dark-card .p-desc{color:rgba(242,232,217,.48);}
+  .p-price{font-size:14px;font-weight:600;color:var(--terra);margin-bottom:12px;}
+  .dark-card .p-price{color:var(--gold);}
+  .p-price .orig{font-size:11px;font-weight:400;color:var(--muted);text-decoration:line-through;margin-left:6px;}
+  .p-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
+  .stars{color:var(--gold);font-size:12px;letter-spacing:1px;}
+  .stars span{color:var(--muted);font-size:11px;margin-left:3px;}
+  .amz-btn{background:var(--terra);color:white;padding:9px 18px;border-radius:30px;font-size:12px;font-weight:500;text-decoration:none;white-space:nowrap;transition:background .2s,transform .2s;display:inline-flex;align-items:center;gap:5px;}
+  .amz-btn:hover{background:var(--burnt);transform:scale(1.04);}
+  .dark-card .amz-btn{background:var(--gold);color:var(--charcoal);}
+  .dark-card .amz-btn:hover{background:#c49a44;}
+
+  /* CATEGORIES */
+  .cats-sec{background:var(--charcoal);}
+  .cats-sec .sec-label{color:var(--gold);}
+  .cats-sec .sec-title{color:var(--sand);}
+  .cats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px;}
+  .cat-card{border-radius:20px;padding:36px 20px;text-align:center;text-decoration:none;display:block;transition:transform .3s,box-shadow .3s;}
+  .cat-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.3);}
+  .cat-icon{font-size:42px;display:block;margin-bottom:14px;}
+  .cat-name{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;margin-bottom:6px;color:var(--sand);}
+  .cat-count{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;opacity:.5;color:var(--sand);}
+  .cc-a{background:rgba(201,106,58,.2);border:1px solid rgba(201,106,58,.3);}
+  .cc-b{background:rgba(212,168,87,.15);border:1px solid rgba(212,168,87,.3);}
+  .cc-c{background:rgba(122,158,126,.15);border:1px solid rgba(122,158,126,.3);}
+  .cc-d{background:rgba(242,232,217,.07);border:1px solid rgba(242,232,217,.15);}
+
+  /* WHY */
+  .why-sec{background:var(--warm);}
+  .why-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+  .why-copy p{color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:40px;}
+  .perks{display:flex;flex-direction:column;gap:22px;}
+  .perk{display:flex;gap:16px;align-items:flex-start;}
+  .perk-ico{width:46px;height:46px;border-radius:14px;background:var(--terra);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+  .perk-ico.sage-bg{background:var(--sage);}
+  .perk-ico.gold-bg{background:var(--gold);}
+  .perk h4{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;margin-bottom:4px;}
+  .perk p{font-size:13.5px;margin:0;line-height:1.6;}
+  .stat-tiles{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .s-tile{border-radius:20px;padding:28px 26px;}
+  .s-tile.span2{grid-column:span 2;}
+  .s-tile .big{font-family:'Cormorant Garamond',serif;font-size:50px;font-weight:700;line-height:1;}
+  .s-tile .lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-top:6px;opacity:.7;}
+  .st1{background:var(--terra);color:white;}
+  .st2{background:var(--charcoal);color:var(--sand);}
+  .st3{background:var(--gold);color:var(--charcoal);}
+  .st4{background:var(--sage);color:white;}
+
+  /* NEWSLETTER */
+  .nl-sec{background:var(--terra);text-align:center;}
+  .nl-sec .sec-label{color:rgba(255,255,255,.55);}
+  .nl-sec .sec-title{color:white;}
+  .nl-sec > p{color:rgba(255,255,255,.7);font-size:15px;max-width:460px;margin:0 auto 44px;line-height:1.8;}
+  .email-row{display:flex;gap:12px;max-width:460px;margin:0 auto;flex-wrap:wrap;justify-content:center;}
+  .email-row input{flex:1;min-width:230px;padding:15px 24px;border-radius:50px;border:none;font-family:'Outfit',sans-serif;font-size:14px;background:white;color:var(--charcoal);outline:none;}
+  .email-row button{background:var(--charcoal);color:var(--sand);padding:15px 30px;border-radius:50px;border:none;font-family:'Outfit',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:background .2s;}
+  .email-row button:hover{background:#333;}
+
+  /* DISCLOSURE */
+  .disclosure-bar{background:var(--sand);padding:16px 80px;text-align:center;}
+  .disclosure-bar p{font-size:12px;color:var(--muted);line-height:1.7;max-width:820px;margin:0 auto;}
+  .disclosure-bar a{color:var(--terra);}
+
+  /* CONTACT SECTION */
+  .contact-sec{background:var(--ivory);}
+  .contact-sec .sec-title{color:var(--charcoal);}
+  .contact-inner{display:grid;grid-template-columns:1fr 1.4fr;gap:72px;align-items:start;margin-top:0;}
+  .contact-info h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;margin-bottom:14px;color:var(--charcoal);}
+  .contact-info p{color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:32px;}
+  .contact-tags{display:flex;flex-direction:column;gap:14px;}
+  .contact-tag{display:flex;align-items:center;gap:14px;padding:14px 18px;background:white;border-radius:14px;box-shadow:0 2px 12px rgba(30,26,23,.06);}
+  .contact-tag-icon{width:38px;height:38px;border-radius:10px;background:var(--terra);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+  .contact-tag-icon.gold-bg{background:var(--gold);}
+  .contact-tag-icon.sage-bg{background:var(--sage);}
+  .contact-tag span{font-size:13px;color:var(--muted);}
+  .contact-tag strong{display:block;font-size:14px;color:var(--charcoal);font-weight:500;}
+
+  .contact-form{background:white;border-radius:24px;padding:40px;box-shadow:0 4px 24px rgba(30,26,23,.07);}
+  .contact-form h3{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;margin-bottom:6px;color:var(--charcoal);}
+  .contact-form > p{font-size:13.5px;color:var(--muted);margin-bottom:28px;line-height:1.6;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+  .form-group{display:flex;flex-direction:column;gap:7px;margin-bottom:16px;}
+  .form-group label{font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--muted);}
+  .form-group input,.form-group select,.form-group textarea{
+    padding:13px 18px;border-radius:12px;border:1.5px solid rgba(30,26,23,.1);
+    font-family:'Outfit',sans-serif;font-size:14px;color:var(--charcoal);
+    background:var(--warm);outline:none;transition:border-color .2s;
+    resize:none;
+  }
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--terra);}
+  .form-submit{width:100%;background:var(--terra);color:white;padding:15px;border-radius:50px;border:none;font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;cursor:pointer;transition:background .2s,transform .2s;margin-top:6px;}
+  .form-submit:hover{background:var(--burnt);transform:translateY(-1px);}
+  .form-note{font-size:12px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.6;}
+  .form-success{display:none;text-align:center;padding:30px;background:rgba(122,158,126,.1);border-radius:16px;border:1.5px solid var(--sage);margin-top:20px;}
+  .form-success .tick{font-size:48px;margin-bottom:12px;}
+  .form-success h4{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--charcoal);margin-bottom:6px;}
+  .form-success p{font-size:14px;color:var(--muted);}
+
+  /* FOOTER */
+  footer{background:var(--charcoal);padding:64px 80px 32px;}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+  .foot-brand{}
+  .foot-logo{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:26px;color:var(--sand);display:flex;align-items:center;gap:0;margin-bottom:14px;}
+  .foot-logo .brand-L{color:var(--terra);}
+  .foot-logo .brand-S{color:var(--terra);}
+  .foot-brand p{font-size:13px;color:rgba(242,232,217,.4);line-height:1.8;max-width:220px;}
+  .foot-col h5{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+  .foot-col p{font-size:12px;color:rgba(242,232,217,.35);line-height:1.7;margin-bottom:14px;}
+  .foot-col a{display:block;font-size:13px;color:rgba(242,232,217,.45);text-decoration:none;margin-bottom:10px;transition:color .2s;}
+  .foot-col a:hover{color:var(--sand);}
+  .foot-bottom{border-top:1px solid rgba(242,232,217,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+  .foot-copy{font-size:12px;color:rgba(242,232,217,.22);}
+  .foot-social{display:flex;gap:12px;}
+  .social-pill{background:rgba(242,232,217,.06);border:1px solid rgba(242,232,217,.1);color:rgba(242,232,217,.4);padding:7px 16px;border-radius:20px;font-size:12px;text-decoration:none;transition:background .2s,color .2s;}
+  .social-pill:hover{background:var(--terra);color:white;border-color:var(--terra);}
+
+  /* ANIMATIONS */
+  @keyframes slideUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.on{opacity:1;transform:translateY(0);}
+
+  @media(max-width:1100px){.grid-products{grid-template-columns:repeat(2,1fr);}.foot-top{grid-template-columns:1fr 1fr;}}
+  @media(max-width:960px){
+    nav{padding:16px 24px;} .nav-links{display:none;}
+    .hero{grid-template-columns:1fr;} .hero-left{padding:110px 28px 60px;} .hero-right{display:none;}
+    section{padding:64px 28px;}
+    .cats-grid{grid-template-columns:1fr 1fr;}
+    .why-inner{grid-template-columns:1fr;}
+    .contact-inner{grid-template-columns:1fr;}
+    .foot-top{grid-template-columns:1fr 1fr;gap:32px;}
+    footer{padding:48px 28px 24px;}
+    .foot-bottom{flex-direction:column;text-align:center;}
+    .disclosure-bar{padding:16px 28px;}
+  }
+  @media(max-width:560px){.grid-products{grid-template-columns:1fr;}.cats-grid{grid-template-columns:1fr 1fr;}.form-row{grid-template-columns:1fr;}.foot-top{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">@ihke<span class="brand-L">L</span><span style="display:inline-block;width:7px;"></span><span class="brand-S">S</span>tudio</a>
+  <ul class="nav-links">
+    <li><a href="#decor">Home Décor</a></li>
+    <li><a href="#beauty">Beauty</a></li>
+    <li><a href="#categories">Categories</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#newsletter" class="nav-cta">Get Deals</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <span class="eyebrow">Curated Amazon India Finds</span>
+    <h1>Style Your<br>Space.<br><em>Glow</em> Every<br>Day.</h1>
+    <p class="hero-sub">@ihkeL Studio hand-picks the best home décor and beauty products from Amazon India — tested, loved, and linked directly for you.</p>
+    <div class="cta-row">
+      <a href="#decor" class="btn-main">Explore Picks →</a>
+      <a href="#categories" class="btn-ghost">Shop by Category</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="collage">
+      <div class="col-card cc1 span2">🕯️ <span class="col-label">Ambiance</span></div>
+      <div class="col-card cc2">🪴<span class="col-label">Décor</span></div>
+      <div class="col-card cc3">✨<span class="col-label">Beauty</span></div>
+      <div class="col-card cc4">💄<span class="col-label">Makeup</span></div>
+      <div class="col-card cc5">🛁<span class="col-label">Self Care</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">⭐ Editor-Curated Picks</div>
+  <div class="trust-item">🇮🇳 Amazon India Links</div>
+  <div class="trust-item">📦 Prime Eligible</div>
+  <div class="trust-item">🔄 Updated Monthly</div>
+</div>
+
+
+<!-- ══════════════ HOME DÉCOR ══════════════ -->
+<section class="picks" id="decor">
+  <div class="picks-head reveal">
+    <div>
+      <p class="sec-label">✦ Home Décor Picks</p>
+      <h2 class="sec-title">Transform Your<br>Living Space</h2>
+    </div>
+    <p>Amazon India's bestselling décor pieces curated for style, quality & value — every one of them loved by thousands.</p>
+  </div>
+  <div class="grid-products">
+
+    <!-- 1: IRIS Candle Set -->
+    <div class="p-card reveal">
+      <div class="p-img" style="background:#f5f0e8;">
+        <img src="https://m.media-amazon.com/images/I/71Hy5MdGfML._SL1500_.jpg"
+             alt="IRIS Home Fragrance Scented Candle Gift Set"
+             onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex';">
+        <div class="fallback" style="background:linear-gradient(135deg,#D4A857,#A07030);">🕯️</div>
+        <span class="badge-pill gold">Bestseller #1</span>
+      </div>
+      <div class="p-body">
+        <p class="p-cat">Candles & Fragrance</p>
+        <h3 class="p-name">IRIS Home Fragrance Gift Set</h3>
+        <p class="p-desc">Set of 3 scented candles — Vanilla, Jasmine & Sandalwood in frosted glass jars. Burns up to 30 hrs each. 12k+ happy buyers.</p>
+        <p class="p-price">₹899 <span class="orig">₹1,499</span></p>
+        <div class="p-foot">
+          <div class="stars">★★★★★<span>(12k+)</span></div>
+          <a href="https://www.amazon.in/s?k=iris+home+fragrance+scented+candle+gift+set&tag=YOUR-TAG-21" target="_blank" rel="noopener" class="amz-btn">Buy ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2: Ugaoo Planters -->
+    <div class="p-card reveal">
+      <div class="p-img" style="background:#eef3ee;">
+        <img src="https://m.media-amazon.com/images/I/71zfRMeXsZL._SL1500_.jpg"
+             alt="Ugaoo Ceramic Planter Set of 3"
+             onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex';">
+        <div class="fallback" style="background:linear-gradient(135deg,#7A9E7E,#4A6741);">🪴</div>
+        <span class="badge-pill">Editor's Pick</span>
+      </div>
+      <div class="p-body">
+        <p class="p-cat">Plants & Planters</p>
+        <h3 class="p-name">Ugaoo Ceramic Planter Set of 3</h3>
+        <p class="p-desc">Matte ceramic pots in terracotta, white & sage. Perfect for succulents & indoor plants. Drainage holes included.</p>
+        <p class="p-price">₹699 <span class="orig">₹1,200</span></p>
+        <div class="p-foot">
+          <div class="stars">★★★★★<span>(8.5k)</span></div>
+          <a href="https://www.amazon.in/s?k=ugaoo+ceramic+planter+set+of+3&tag=YOUR-TAG-21" target="_blank" rel="noopener" class="amz-btn">Buy ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3: Wens Wall Art -->
+    <div class="p-card reveal">
+      <div class="p-img" style="background:#f8f3ed;">
+        <img src="https://m.media-amazon.com/images/I/81Qy5MuaGLL._SL1500_.jpg"
+             alt="Wens Decorative Wall Art Set of 3"
+             onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex';">
+        <div class="fallback" style="background:linear-gradient(135deg,#D4A857,#C96A3A);">🖼️</div>
+        <span class="badge-pill gold">Top Rated</span>
+      </div>
+      <div class="p-body">
+        <p class="p-cat">Wall Art & Prints</p>
+        <h3 class="p-name">Wens Decorative Wall Art Set of 3</h3>
+        <p class="p-desc">Framed botanical prints in earthy tones. Waterproof, UV-protected & ready to hang. A 3-year Amazon India bestseller.</p>
+        <p class="p-price">₹799 <span class="orig">₹1,499</span></p>
+        <div class="p-foot">
+          <div class="stars">★★★★★<span>(16k)</span></div>
+          <a href="https://www.amazon.in/s?k=wens+wall+art+set+of+3+botanical+framed&tag=YOUR-TAG-21" target="_blank" rel="noopener" class="amz-btn">Buy ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4: Fairy Lights -->
+    <div class="p-card reveal">
+      <div class="p-img" style="background:#1e2a1e;">
+        <img src="https://m.media-amazon.com/images/I/71UuwmfxeLL._SL1500_.jpg"
+             alt="LED Fairy String Lights 10 metre"
+             onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex';">
+        <div class="fallback" style="background:linear-gradient(135deg,#4A6741,#2E3E2A);">💡</div>
+        <span class="badge-pill sage">New Pick</span>
+      </div>
+      <div class="p-body">
+        <p class="p-cat">Lighting</p>
+        <h3 class="p-name">Syska Fairy LED String Lights</h3>
+        <p class="p-desc">10-metre warm white fairy lights, USB powered. Waterproof & dimmable — perfect bedroom or balcony ambiance.</p>
+        <p class="p-price">₹349 <span class="orig">₹599</span></p>
+        <div class="p-foot">
+          <div class="stars">★★★★☆<span>(33k)</span></div>
+          <a href="https://www.amazon.in/s?k=syska+fairy+led+string+lights+10+metre&tag=YOUR-TAG-21" target="_blank" rel="noopener" class="amz-btn">Buy ↗</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════ BEAUTY ══════════════ -->
+<section class="beauty-sec" id="beauty">
+  <div class="picks-head reveal">
+    <div>
+      <p class="sec-label">✦ Beauty & Skincare</p>
+      <h2 class="sec-title">Glow-Up<br>Essentials</h2>
+    </div>
+    <p>Products our readers order on repeat — from skincare staples to makeup must-haves, all Amazon India bestsellers.</p>
+  </div>
+  <div class="grid-products">
+
+    <!-- 1: Minimalist Niacinamide -->
+    <div class="p-card dark-card reveal">
+      <div class="p-img" style="background:#12121e;">
+        <img src="https://m.media-amazon.com/images/I/51vHuDiSqUL._SL1080_.jpg"
+             alt="Minimalist 10% Niacinamide Serum"
+             onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex';">
+        <div class="fallback" style="background:linear-gradient(135deg,#3D2020,#7A3A2A);">🧴</div>
+        <span class="badge-pill gold">Bestseller #1</span>
+      </div>
+      <div class="p-body">
+        <p class="p-cat">Skincare</p>
+        <h3 class="p-name">Minimalist 10% Niacinamide Serum</h3>
+        <p class="p-desc">India's cult-favourite for pores & uneven skin tone. Dermatologist-formulated, fragrance-free. 30ml.</p>
+        <p class="p-price">₹599 <span class="orig">₹799</span></p>
+        <div class="p-foot">
+          <div class="stars">★★★★★<span>(45k)</span></div>
+          <a href="https://www.amazon.in/s?k=minimalist+10+niacinamide+serum&tag=YOUR-TAG-21" target="_blank" rel="noopener" class="amz-btn">Buy ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2: WOW Onion Hair Oil -->
+    <div class="p-card reveal">
+      <div class="p-img" style="background:#fff8f0;">
+        <img src="https://m.media-amazon.com/images/I/61kHFMEKJjL._SL1500_.jpg"
+             alt="WOW Skin Science Onion Black Seed Hair Oil"
+             onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex';">
+        <div class="fallback" style="background:linear-gradient(135deg,#D4A857,#8A6030);">🪮</div>
+        <span class="badge-pill">Most Loved</span>
+      </div>
+      <div class="p-body">
+        <p class="p-cat">Hair Care</p>
+        <h3 class="p-name">WOW Onion Black Seed Hair Oil</h3>
+        <p class="p-desc">Red onion + black seed oil clinically proven to reduce hairfall. 100% natural. Amazon India's #1 hair oil for 4 years.</p>
+        <p class="p-price">₹449 <span class="orig">₹699</span></p>
+        <div class="p-foot">
+          <div class="stars">★★★★★<span>(62k)</span></div>
+          <a href="https://www.amazon.in/s?k=wow+onion+black+seed+hair+oil&tag=YOUR-TAG-21" target="_blank" rel="noopener" class="amz-btn">Buy ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3: Cetaphil -->
+    <div class="p-card reveal">
+      <div class="p-img" style="background:#f0f4f8;">
+        <img src="https://m.media-amazon.com/images/I/61pBBNGrxYL._SL1500_.jpg"
+             alt="Cetaphil Gentle Skin Cleanser 500ml"
+             onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex';">
+        <div class="fallback" style="background:linear-gradient(135deg,#C96A3A,#5A2A10);">🧼</div>
+        <span class="badge-pill gold">Top Rated</span>
+      </div>
+      <div class="p-body">
+        <p class="p-cat">Cleansers</p>
+        <h3 class="p-name">Cetaphil Gentle Skin Cleanser</h3>
+        <p class="p-desc">Dermatologist-recommended for sensitive & dry skin. Soap-free, fragrance-free. 500ml pump — brilliant value.</p>
+        <p class="p-price">₹699 <span class="orig">₹950</span></p>
+        <div class="p-foot">
+          <div class="stars">★★★★★<span>(78k)</span></div>
+          <a href="https://www.amazon.in/s?k=cetaphil+gentle+skin+cleanser+500ml&tag=YOUR-TAG-21" target="_blank" rel="noopener" class="amz-btn">Buy ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4: Lakme -->
+    <div class="p-card dark-card reveal">
+      <div class="p-img" style="background:#2a1520;">
+        <img src="https://m.media-amazon.com/images/I/71oqBTRGnIL._SL1500_.jpg"
+             alt="Lakme 9to5 Weightless Matte Mousse Lip Colour"
+             onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex';">
+        <div class="fallback" style="background:linear-gradient(135deg,#2E2010,#6A4A1A);">💄</div>
+        <span class="badge-pill">Trending</span>
+      </div>
+      <div class="p-body">
+        <p class="p-cat">Makeup</p>
+        <h3 class="p-name">Lakmé 9-to-5 Matte Mousse Lip</h3>
+        <p class="p-desc">Feather-light mousse formula, 12-hour stay, 20 stunning shades. No drying — perfect for daily wear.</p>
+        <p class="p-price">₹299 <span class="orig">₹425</span></p>
+        <div class="p-foot">
+          <div class="stars">★★★★★<span>(95k)</span></div>
+          <a href="https://www.amazon.in/s?k=lakme+9to5+weightless+matte+mousse+lip&tag=YOUR-TAG-21" target="_blank" rel="noopener" class="amz-btn">Buy ↗</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════ CATEGORIES ══════════════ -->
+<section class="cats-sec" id="categories">
+  <div style="text-align:center" class="reveal">
+    <p class="sec-label">✦ Browse by Category</p>
+    <h2 class="sec-title">Find What You Love</h2>
+  </div>
+  <div class="cats-grid reveal">
+    <a href="https://www.amazon.in/s?k=home+decor&tag=YOUR-TAG-21" target="_blank" rel="noopener" class="cat-card cc-a">
+      <span class="cat-icon">🛋️</span><div class="cat-name">Living Room</div><div class="cat-count">200+ picks</div>
+    </a>
+    <a href="https://www.amazon.in/s?k=skincare&tag=YOUR-TAG-21" target="_blank" rel="noopener" class="cat-card cc-b">
+      <span class="cat-icon">✨</span><div class="cat-name">Skincare</div><div class="cat-count">150+ picks</div>
+    </a>
+    <a href="https://www.amazon.in/s?k=bedroom+decor&tag=YOUR-TAG-21" target="_blank" rel="noopener" class="cat-card cc-c">
+      <span class="cat-icon">🛏️</span><div class="cat-name">Bedroom</div><div class="cat-count">180+ picks</div>
+    </a>
+    <a href="https://www.amazon.in/s?k=makeup&tag=YOUR-TAG-21" target="_blank" rel="noopener" class="cat-card cc-d">
+      <span class="cat-icon">💄</span><div class="cat-name">Makeup</div><div class="cat-count">120+ picks</div>
+    </a>
+  </div>
+</section>
+
+
+<!-- ══════════════ WHY ══════════════ -->
+<section class="why-sec" id="about">
+  <div class="why-inner">
+    <div class="why-copy reveal">
+      <p class="sec-label">✦ About @ihkeL Studio</p>
+      <h2 class="sec-title">Curated With<br>Intention</h2>
+      <p>At @ihkeL Studio, we do the research so you don't have to. Every product has been vetted for genuine reviews, quality materials & real value — no paid promotions, ever.</p>
+      <div class="perks">
+        <div class="perk">
+          <div class="perk-ico">🔍</div>
+          <div><h4>Deeply Researched</h4><p>We analyse thousands of reviews before making any recommendation.</p></div>
+        </div>
+        <div class="perk">
+          <div class="perk-ico sage-bg">💰</div>
+          <div><h4>Best Value Guaranteed</h4><p>Picks from ₹299 to premium — something great for every budget.</p></div>
+        </div>
+        <div class="perk">
+          <div class="perk-ico gold-bg">🔄</div>
+          <div><h4>Refreshed Every Month</h4><p>Our picks stay current with what's actually trending right now.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="stat-tiles reveal">
+      <div class="s-tile st1"><div class="big">500+</div><div class="lbl">Products Reviewed</div></div>
+      <div class="s-tile st2"><div class="big">98%</div><div class="lbl">Satisfaction Rate</div></div>
+      <div class="s-tile st4"><div class="big">50K+</div><div class="lbl">Amazon Orders Placed</div></div>
+      <div class="s-tile st3 span2"><div class="big">₹10 Cr+</div><div class="lbl">Saved by Our Community in Deals</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ NEWSLETTER ══════════════ -->
+<section class="nl-sec" id="newsletter">
+  <p class="sec-label">✦ Stay In The Loop</p>
+  <h2 class="sec-title reveal">Weekly Deals<br>Right to Your Inbox</h2>
+  <p class="reveal">New picks, flash sales and Amazon India deals — delivered every Friday. No spam, ever.</p>
+  <div class="email-row reveal">
+    <input type="email" id="emailInput" placeholder="your@email.com">
+    <button onclick="subscribe()">Subscribe ✦</button>
+  </div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section class="contact-sec" id="contact">
+  <div class="picks-head reveal">
+    <div>
+      <p class="sec-label">✦ Get In Touch</p>
+      <h2 class="sec-title">We'd Love to<br>Hear From You</h2>
+    </div>
+    <p>Have a product suggestion, a question, or just want to say hi? Drop us a message — we reply within 48 hours.</p>
+  </div>
+  <div class="contact-inner">
+
+    <!-- Left: Info cards -->
+    <div class="contact-info reveal">
+      <h3>Why reach out?</h3>
+      <p>Whether you have a product you'd love us to review, feedback about the site, or a collaboration idea — we're all ears. No personal details are collected beyond what you choose to share.</p>
+      <div class="contact-tags">
+        <div class="contact-tag">
+          <div class="contact-tag-icon">💡</div>
+          <div><strong>Product Suggestions</strong><span>Know a great Amazon India find? Tell us!</span></div>
+        </div>
+        <div class="contact-tag">
+          <div class="contact-tag-icon gold-bg">🤝</div>
+          <div><strong>Collaborations</strong><span>Brand partnerships & content collabs welcome.</span></div>
+        </div>
+        <div class="contact-tag">
+          <div class="contact-tag-icon sage-bg">💬</div>
+          <div><strong>General Feedback</strong><span>Help us make @ihkeL Studio even better.</span></div>
+        </div>
+        <div class="contact-tag">
+          <div class="contact-tag-icon" style="background:var(--charcoal);">⏱️</div>
+          <div><strong>Response Time</strong><span>We usually reply within 24–48 hours.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Form -->
+    <div class="contact-form reveal">
+      <h3>Send a Message</h3>
+      <p>No account needed. Your details stay private and are never shared with third parties.</p>
+      <div id="contactFormWrap">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="cf-name" placeholder="e.g. Priya Sharma">
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="cf-email" placeholder="your@email.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <select id="cf-subject">
+            <option value="" disabled selected>Select a topic…</option>
+            <option>Product Suggestion</option>
+            <option>Collaboration / Brand Partnership</option>
+            <option>Website Feedback</option>
+            <option>Affiliate / Deal Query</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea id="cf-msg" rows="5" placeholder="Share your thoughts, suggestions or questions here…"></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()">Send Message ✦</button>
+        <p class="form-note">🔒 Your information is private and never sold or shared. This form is for communication only.</p>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <div class="tick">✅</div>
+        <h4>Message Sent!</h4>
+        <p>Thank you for reaching out. We'll get back to you within 24–48 hours.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- AFFILIATE DISCLOSURE -->
+<div class="disclosure-bar">
+  <p>
+    <strong>Affiliate Disclosure:</strong> @ihkeL Studio is a participant in the Amazon Associates Programme (amazon.in).
+    As an Amazon Associate, we earn a small commission from qualifying purchases made through our links — at no extra cost to you.
+    All recommendations are based on genuine editorial research, not paid promotions.
+    &nbsp;·&nbsp;<a href="#">Privacy Policy</a>&nbsp;·&nbsp;<a href="#">Full Disclosure</a>
+  </p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-top">
+
+    <!-- Brand col -->
+    <div class="foot-brand">
+      <div class="foot-logo">@ihke<span class="brand-L">L</span><span style="display:inline-block;width:7px;"></span><span class="brand-S">S</span>tudio</div>
+      <p>Your trusted source for curated home décor and beauty picks from Amazon India. Handpicked with love, updated every month.</p>
+    </div>
+
+    <!-- Home Décor -->
+    <div class="foot-col">
+      <h5>🛋️ Home Décor</h5>
+      <p>Stylish, affordable picks to transform every corner of your home — from living rooms to cosy bedrooms.</p>
+      <a href="#decor">View All Décor Picks →</a>
+    </div>
+
+    <!-- Beauty -->
+    <div class="foot-col">
+      <h5>✨ Beauty</h5>
+      <p>Editor-curated skincare, hair care & makeup bestsellers that actually work — for every skin type & budget.</p>
+      <a href="#beauty">View All Beauty Picks →</a>
+    </div>
+
+    <!-- Categories -->
+    <div class="foot-col">
+      <h5>📦 Categories</h5>
+      <p>Browse by room or product type to find exactly what you're looking for, fast.</p>
+      <a href="#categories">Living Room</a>
+      <a href="#categories">Skincare</a>
+      <a href="#categories">Bedroom</a>
+      <a href="#categories">Makeup</a>
+    </div>
+
+    <!-- About & Contact -->
+    <div class="foot-col">
+      <h5>💛 About</h5>
+      <p>@ihkeL Studio is an independent curation site — no brands pay for placement. Just honest picks.</p>
+      <a href="#about">Our Story</a>
+      <a href="#contact">Contact Us</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+
+  </div>
+
+  <div class="foot-bottom">
+    <div class="foot-copy">© 2026 @ihkeL Studio. All rights reserved. Amazon Associates participant.</div>
+    <div class="foot-social">
+      <a href="#" class="social-pill">📸 Instagram</a>
+      <a href="#" class="social-pill">▶️ YouTube</a>
+      <a href="#" class="social-pill">📌 Pinterest</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e,i) => {
+      if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('on'),i*90); io.unobserve(e.target); }
+    });
+  },{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  function subscribe(){
+    const inp=document.getElementById('emailInput');
+    if(inp.value.includes('@')){
+      inp.value=''; inp.placeholder='🎉 You\'re in! Check your inbox soon.';
+      setTimeout(()=>inp.placeholder='your@email.com',4000);
+    } else {
+      inp.placeholder='⚠️ Please enter a valid email';
+      setTimeout(()=>inp.placeholder='your@email.com',2500);
+    }
+  }
+  document.getElementById('emailInput').addEventListener('keydown',e=>{if(e.key==='Enter')subscribe();});
+
+  function submitForm(){
+    const name=document.getElementById('cf-name').value.trim();
+    const email=document.getElementById('cf-email').value.trim();
+    const subject=document.getElementById('cf-subject').value;
+    const msg=document.getElementById('cf-msg').value.trim();
+    if(!name||!email.includes('@')||!subject||!msg){
+      alert('Please fill in all fields before sending.');
+      return;
+    }
+    document.getElementById('contactFormWrap').style.display='none';
+    document.getElementById('formSuccess').style.display='block';
+  }
+</script>
+</body>
+</html>
